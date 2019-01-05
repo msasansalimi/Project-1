@@ -40,7 +40,7 @@ $(document).ready(function(){
    
     var q=form+"_"+to
     console.log(q)
-    var queryUrl="http://free.currencyconverterapi.com/api/v6/convert?q="+q
+    var queryUrl="https://free.currencyconverterapi.com/api/v6/convert?q="+q
 
     console.log(queryUrl)
    $.ajax({
