@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -15,6 +16,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+
+   <link href="jquery-flexdatalist-2.2.4/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
+    <script src="jquery-flexdatalist-2.2.4/jquery.flexdatalist.min.js"></script>
     <script src="main.js"></script>
 </head>
 
@@ -25,25 +29,38 @@
             <input type="text" id="amount"class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
 
         </div>
-        <select class="custom-select" id="from">
-            <option selected>...</option>
-         
-        </select>
+      
+                <input type='text'
+                placeholder='currency'
+                class='flexdatalist'
+                data-min-length='1'
+                list='currency'
+                name="currnecy"
+                id="from"'>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">To</label>
-            <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+
 
         </div>
-        <select class="custom-select" id="to">
-            <option selected>...</option>
-          
-        </select>
+        <input type='text'
+        placeholder='currency'
+        class='flexdatalist'
+        data-min-length='1'
+        list='currency'
+        name="currnecy"
+        id="to">
     </div>
 
 
     <button type="button" id="convert" class="btn btn-primary">Primary</button>
+
+
+
+<datalist id="currency">
+
+</datalist>
 </body>
 
 </html>
