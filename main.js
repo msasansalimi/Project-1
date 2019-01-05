@@ -18,41 +18,30 @@ $(document).ready(function(){
     option.setAttribute("value",snapshot.val().id)
     option.setAttribute("class", "list")
     option.textContent=snapshot.val().currencyName
-    document.getElementById("from").append(option)
+    document.getElementById("currency").append(option)
 
    })
   
-   database.ref("/currency/list/results").on("child_added",function(snapshot){
-    var option= document.createElement("option")
-    option.setAttribute("value",snapshot.val().id)
-    option.textContent=snapshot.val().currencyName
-    document.getElementById("to").append(option)
-
-   })
 
 
+// creates the dropdown list for the diffrent currencies the first one is for the base and the second on is for what we want
 
    document.getElementById("convert").addEventListener("click",function(){
       
     
     // 
-    var form=document.getElementsByClassName("list")[document.getElementById("from").selectedIndex-1].value
-    var to=document.getElementsByClassName("list")[document.getElementById("to").selectedIndex-1].value
+    var form=document.getElementById("from").value
+    var to=document.getElementById("to").value
     var amount=parseFloat(document.getElementById("amount").value)
-    console.log(amount)
-    console.log(form)
     console.log(to)
+    console.log(form)
+    console.log(amount)
    
    
     var q=form+"_"+to
     console.log(q)
     var queryUrl="http://free.currencyconverterapi.com/api/v6/convert?q="+q
-    // queryUrl+="?"+ $.param({
-    // "access_key":key,
-    // "from":from,
-    // "to":to,
-    // "amount":amount
-    // })
+
     console.log(queryUrl)
    $.ajax({
     url:queryUrl,
@@ -73,7 +62,10 @@ $(document).ready(function(){
 
 
 
-
+    $('.flexdatalist').flexdatalist({
+        minLength: 1,
+        valueProperty:"value"
+   });
 
 
 
