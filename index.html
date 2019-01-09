@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
 </head>
 
 <body>
@@ -76,14 +77,14 @@
           </div>
         </div>
         <br>
-        <button type="button" class="btn btn-primary">Search</button><br>
+        <button type="button" class="btn btn-primary" id="eventSearch">Search</button><br>
         <br>
       </form>
 
 
-      <div class="event-poster">
+      <div class="event-poster" id="eventDisplay">
 
-        <div class="card">
+     <!-- <div class="card">
           <div class="card-body">
             <h2 class="text-center">Images relevent to the selected event!</h2>
             <img src="IMAGES/img1.jpg" alt="pic1" width="200px" height="200px">
@@ -92,17 +93,17 @@
             <img src="IMAGES/img4.jpg" alt="pic1" width="200px" height="200px">
             <img src="IMAGES/img5.jpg" alt="pic1" width="200px" height="200px">
             <img src="IMAGES/img6.jpg" alt="pic1" width="200px" height="200px"><br>
-            <br>
+            <br> -->
 
 
 
-            <!-- Button trigger modal -->
+            <!-- Button trigger modal
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
               Event Poster
-            </button>
+            </button> -->
             
 
-            <!-- Modal -->
+            <!-- Modal
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -125,7 +126,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>  -->
 
       </div>
     </div>
@@ -134,7 +135,9 @@
 
   </div>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+  <script src="./assets/javascript/event.js"></script> <!--Eventful API link-->
 </body>
 
 </html>

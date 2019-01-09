@@ -72,6 +72,8 @@ $("#eventSearch").on("click", function(){
 
                         var newEventcardbody = $("<div>");
                         newEventcardbody.addClass("card-body");
+                        newEventcardbody.attr("data-min", EventMinPrice);
+                        newEventcardbody.attr("data-max", eventMaxPrice);
 
                         
                         var neweventTitle = $("<h5>");
@@ -129,7 +131,7 @@ $("#eventSearch").on("click", function(){
                         // </div>
                     }
 
-
+                    $("#eventDisplay").attr("data-currency", eventCurrency);
 
 
 
