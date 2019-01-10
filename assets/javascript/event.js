@@ -9,6 +9,91 @@ var eventTime;
 var eventImage;
 var eventVenue;
 var eventURL;
+var ticketmasterCountries = [
+    {"code":"US","name":"united states of america"},		
+    {"code":"AD","name":"andorra"},		
+    {"code":"AI","name":"anguilla"},		
+    {"code":"AR","name":"argentina"},		
+    {"code":"AU","name":"australia"},		
+    {"code":"AT","name":"austria"},		
+    {"code":"AZ","name":"azerbaijan"},		
+    {"code":"BS","name":"bahamas"},		
+    {"code":"BH","name":"bahrain"},		
+    {"code":"BB","name":"barbados"},		
+    {"code":"BE","name":"belgium"},		
+    {"code":"BM","name":"bermuda"},		
+    {"code":"BR","name":"brazil"},		
+    {"code":"BG","name":"bulgaria"},		
+    {"code":"CA","name":"Canada"},		
+    {"code":"CL","name":"Chile"},		
+    {"code":"CN","name":"China"},		
+    {"code":"CO","name":"Colombia"},		
+    {"code":"CR","name":"Costa rica"},		
+    {"code":"HR","name":"Croatia"},		
+    {"code":"CY","name":"Cyprus"},		
+    {"code":"CZ","name":"Czech republic"},		
+    {"code":"DK","name":"denmark"},		
+    {"code":"DO","name":"dominican republic"},		
+    {"code":"EC","name":"ecuador"},		
+    {"code":"EE","name":"estonia"},		
+    {"code":"FO","name":"faroe islands"},		
+    {"code":"FI","name":"finland"},		
+    {"code":"FR","name":"france"},		
+    {"code":"GE","name":"georgia"},		
+    {"code":"DE","name":"germany"},		
+    {"code":"GH","name":"ghana"},		
+    {"code":"GI","name":"gibraltar"},		
+    {"code":"GB","name":"great britain"},		
+    {"code":"GR","name":"greece"},		
+    {"code":"HK","name":"hong kong"},		
+    {"code":"HU","name":"hungary"},		
+    {"code":"IS","name":"iceland"},		
+    {"code":"IN","name":"india"},		
+    {"code":"IE","name":"ireland"},		
+    {"code":"IL","name":"israel"},		
+    {"code":"IT","name":"italy"},		
+    {"code":"JM","name":"jamaica"},		
+    {"code":"JP","name":"japan"},		
+    {"code":"KR","name":"korea"},
+    {"code":"LV","name":"latvia"},		
+    {"code":"LB","name":"lebanon"},		
+    {"code":"LT","name":"lithuania"},		
+    {"code":"LU","name":"luxembourg"},		
+    {"code":"MY","name":"malaysia"},		
+    {"code":"MT","name":"malta"},		
+    {"code":"MX","name":"mexico"},		
+    {"code":"MC","name":"monaco"},		
+    {"code":"ME","name":"montenegro"},		
+    {"code":"MA","name":"morocco"},		
+    {"code":"NL","name":"netherlands"},		
+    {"code":"AN","name":"netherlands antilles"},		
+    {"code":"NZ","name":"new zealand"},		
+    {"code":"ND","name":"northern ireland"},		
+    {"code":"NO","name":"norway"},		
+    {"code":"PE","name":"peru"},		
+    {"code":"PL","name":"poland"},		
+    {"code":"PT","name":"portugal"},		
+    {"code":"RO","name":"romania"},		
+    {"code":"RU","name":"russian federation"},		
+    {"code":"LC","name":"saint lucia"},		
+    {"code":"SA","name":"saudi arabia"},		
+    {"code":"RS","name":"serbia"},		
+    {"code":"SG","name":"singapore"},		
+    {"code":"SK","name":"slovakia"},		
+    {"code":"SI","name":"slovenia"},		
+    {"code":"ZA","name":"south africa"},		
+    {"code":"ES","name":"spain"},		
+    {"code":"SE","name":"sweden"},		
+    {"code":"CH","name":"switzerland"},		
+    {"code":"TW","name":"taiwan"},		
+    {"code":"TH","name":"thailand"},		
+    {"code":"TT","name":"trinidad and tobago"},		
+    {"code":"TR","name":"turkey"},		
+    {"code":"UA","name":"ukraine"},		
+    {"code":"AE","name":"united arab emirates"},		
+    {"code":"UY","name":"uruguay"},		
+    {"code":"VE","name":"venezuela"},		
+]
 
 
 $("#eventSearch").on("click", function(){
@@ -17,6 +102,9 @@ $("#eventSearch").on("click", function(){
    
    console.log("you clicked me!");
     //capture search values
+
+    //Generate URL
+    //https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&city=Toronto&countryCode=&stateCode=
 
     //Ticketmaster API
     $.ajax({
@@ -38,7 +126,7 @@ $("#eventSearch").on("click", function(){
                           
                         console.log("Event number is: " +i);
                         console.log("Event name is :" + eventResults[i].name);//1
-                        console.log("Event image :" + eventResults[i].images[0].url);//2
+                        console.log("Event image :" + eventResults[i].images[3].url);//2
                         console.log("Event Currency  :" + eventResults[i].priceRanges[0].currency);//3
                         console.log("Event Min Price :" + eventResults[i].priceRanges[0].min);//4
                         console.log("Event Max Price :" + eventResults[i].priceRanges[0].max);//5
