@@ -94,6 +94,7 @@ var ticketmasterCountries = [
     {"code":"UY","name":"uruguay"},		
     {"code":"VE","name":"venezuela"},		
 ]
+$(document).ready(function(){
 
 
 $("#eventSearch").on("click", function(){
@@ -235,6 +236,7 @@ $("#eventSearch").on("click", function(){
 
       });
 
+      
 
 });
-
+});
