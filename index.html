@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -33,76 +34,90 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-3">
       <div class="card text-center">
         <div class="card-header">
-          <h1>Currency Convertor</h1>
+          <h2>Currency Convertor</h2>
+        </div>
+
+        <div class="card-body">
+
+          <nav class="nav flex-column">
+            <form>
+              <div class="form-row">
+                <div class="col-12">
+                  <label for="amount" class="convertorform-label">Amount</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="col-12">
+                  <label for="from" class="convertorform-label">From</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="col-12">
+                  <label for="to" class="convertorto-label">To</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <br>
+              <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
+            </form>
+          </nav>
+        </div>
+
+        <div class="card-header">
+          <h2>Event Location</h2>
         </div>
         <div class="card-body">
-          <form>
-            <div class="form-row">
-              <div class="col-4">
-                <label for="amount" class="convertorform-label">Amount</label>
-                <input type="text" class="form-control">
+
+          <nav class="nav flex-column">
+            <form>
+              <div class="form-row">
+
+                <div class="col-12">
+                  <label for="amount" class="convertorform-label"></label>
+                  <input type="text" class="form-control" placeholder="Country">
+                </div>
+                <div class="col-12">
+                  <label for="from" class="convertorform-label"></label>
+                  <input type="text" class="form-control" placeholder="State">
+                </div>
+                <div class="col-12">
+                  <label for="to" class="convertorto-label"></label>
+                  <input type="text" class="form-control" placeholder="City">
+                </div>
+
               </div>
-              <div class="col-4">
-                <label for="from" class="convertorform-label">From</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-4">
-                <label for="to" class="convertorto-label">To</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <br>
-            <h1><strong>=<span id="converted-amount"></span></strong></h1>
-          </form>
+              <br>
+              <button type="button" class="btn btn-primary">Search</button><br>
+              <br>
+            </form>
+          </nav>
         </div>
       </div>
     </div>
 
-    <div class="col-6">
 
-      <form>
-        <div class="form-row">
-          <div class="col-4">
-            <input type="text" class="form-control" placeholder="Country">
-          </div>
-          <div class="col-4">
-            <input type="text" class="form-control" placeholder="State">
-          </div>
-          <div class="col-4">
-            <input type="text" class="form-control" placeholder="City">
-          </div>
-        </div>
-        <br>
-        <button type="button" class="btn btn-primary">Search</button><br>
-        <br>
-      </form>
+    <div class="col-9">
 
 
-      <div class="event-poster">
+
+      <div class="event-poster" id="eventDisplay">
 
         <div class="card">
           <div class="card-body">
             <h2 class="text-center">Images relevent to the selected event!</h2>
-            <img src="IMAGES/img1.jpg" alt="pic1" width="200px" height="200px">
-            <img src="IMAGES/img2.jpg" alt="pic1" width="200px" height="200px">
-            <img src="IMAGES/img3.jpg" alt="pic1" width="200px" height="200px">
-            <img src="IMAGES/img4.jpg" alt="pic1" width="200px" height="200px">
-            <img src="IMAGES/img5.jpg" alt="pic1" width="200px" height="200px">
-            <img src="IMAGES/img6.jpg" alt="pic1" width="200px" height="200px"><br>
+
+            <img src="IMAGES/img6.jpg" alt="pic1" width="800px" height="450px"><br>
             <br>
 
 
 
-            <!-- Button trigger modal -->
+
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
               Event Poster
             </button>
-            
 
-            <!-- Modal -->
+
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -114,9 +129,9 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img src="IMAGES/img1.jpg" alt="pic">
-                  
-                
+                    <img src="IMAGES/img6.jpg" alt="pic">
+
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -134,7 +149,10 @@
 
   </div>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+  <script src="./assets/javascript/event.js"></script>
+  <!--Eventful API link-->
 </body>
 
 </html>
