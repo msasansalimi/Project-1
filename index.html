@@ -97,15 +97,37 @@
     </div>
 
 
+
     <div class="col-9">
+
+
+
+
+      <form>
+        <div class="form-row">
+          <div class="col-4">
+            <input type="text" class="form-control" placeholder="Country">
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" placeholder="State">
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" placeholder="City">
+          </div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" id="eventSearch">Search</button><br>
+        <br>
+      </form>
 
 
 
       <div class="event-poster" id="eventDisplay">
 
-        <div class="card">
+     <div class="card">
           <div class="card-body">
             <h2 class="text-center">Images relevent to the selected event!</h2>
+
 
             <img src="IMAGES/img6.jpg" alt="pic1" width="800px" height="450px"><br>
             <br>
@@ -117,6 +139,25 @@
               Event Poster
             </button>
 
+
+
+            <img src="IMAGES/img1.jpg" alt="pic1" width="200px" height="200px">
+            <img src="IMAGES/img2.jpg" alt="pic1" width="200px" height="200px">
+            <img src="IMAGES/img3.jpg" alt="pic1" width="200px" height="200px">
+            <img src="IMAGES/img4.jpg" alt="pic1" width="200px" height="200px">
+            <img src="IMAGES/img5.jpg" alt="pic1" width="200px" height="200px">
+            <img src="IMAGES/img6.jpg" alt="pic1" width="200px" height="200px"><br>
+            <br> 
+
+
+
+             Button trigger modal
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+              Event Poster
+            </button> -->
+            
+
+             Modal
 
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
               aria-hidden="true">
@@ -140,7 +181,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>  
 
       </div>
     </div>
@@ -151,8 +192,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://api.eventful.com/js/api"></script>
+
   <script src="./assets/javascript/event.js"></script>
   <!--Eventful API link-->
+
+  <script src="./assets/javascript/event.js"></script> <!--Eventful API link-->
+
 </body>
 
 </html>
