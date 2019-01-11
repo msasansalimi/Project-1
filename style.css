@@ -1,3 +1,7 @@
 body {
     background-color:royalblue;
 }
+#search-bar {
+    background-color: grey;
+    color: white;
+}
