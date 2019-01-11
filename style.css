@@ -14,3 +14,18 @@ body {
         right: 10px;
 
 }
+ #log-in-drop{
+     display: none;
+ }
+ .card-head{
+     display: flex;
+     flex-direction: row;
+ }
+
+.favorited{
+
+    border-color: gold;
+}
+.fav_button_clicked{
+    background-color: gold !important;
+}
