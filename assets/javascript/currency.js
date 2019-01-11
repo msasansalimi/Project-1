@@ -1,13 +1,13 @@
 $(document).ready(function(){
-    var config = {
-        apiKey: "AIzaSyAm2DX2UmnZ1-IG1fWL4lFJWPvx2eXV5PU",
-        authDomain: "rps-game-ce388.firebaseapp.com",
-        databaseURL: "https://rps-game-ce388.firebaseio.com",
-        projectId: "rps-game-ce388",
-        storageBucket: "rps-game-ce388.appspot.com",
-        messagingSenderId: "138684371598"
-      };
-      firebase.initializeApp(config);
+    // var config = {
+    //     apiKey: "AIzaSyAm2DX2UmnZ1-IG1fWL4lFJWPvx2eXV5PU",
+    //     authDomain: "rps-game-ce388.firebaseapp.com",
+    //     databaseURL: "https://rps-game-ce388.firebaseio.com",
+    //     projectId: "rps-game-ce388",
+    //     storageBucket: "rps-game-ce388.appspot.com",
+    //     messagingSenderId: "138684371598"
+    //   };
+    //   firebase.initializeApp(config);
 
    var database=firebase.database();
 
