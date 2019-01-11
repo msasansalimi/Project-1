@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>First Project!</title>
+        <title>User Page!</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link href="assets/jquery-flexdatalist-2.2.4/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="style.css">
@@ -40,9 +40,94 @@
                 <h1 class="text-center">User Page! (Think up of a better title!)</h1>
             </div>
         </div>
+        <div class="row">
+            <div class="col-3">
+              <div class="card text-center">
+                <div class="card-header">
+                  <h2>Currency Convertor</h2>
+                </div>
+        
+                <div class="card-body">
+        
+                    <nav class="nav flex-column">
+                        <form>
+                            <div class="form-row">
+                                <div class="col-12">
+                                <label for="amount" class="convertorform-label">Amount</label>
+                                <input type="text" class="form-control">
+                                </div>
+                            <div class="col-12">
+                                <label for="from" class="convertorform-label">From</label>
+                                <input type="text" class="form-control flexdatalist" data-min-length='1'
+                                list='currency'
+                                name="currnecy"
+                                id="from" >
+                            </div>
+                            <div class="col-12">
+                            <label for="to" class="convertorto-label">To</label>
+                            <input type="text" class="form-control  flexdatalist" data-min-length='1'
+                            list='currency'
+                            name="currnecy"
+                            id="to">
+                            </div>
+                            </div>
+                            <br>
+                            <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
+                        </form>
+                    </nav>
+                </div>
+                <div class="card-footer">
+                    <button type="button" id="convert" class="btn btn-primary">Convert</button>
+                </div>
+              </div>
+            </div>
 
-    <!--Things to add-->
 
+
+
+
+            <div class="col=9">
+              <div class="event-poster" id="eventDisplay">
+
+                <div class="card">
+                  <div class="card-body">
+                    <h2 class="text-center">Saved Events!</h2>
+        
+                    <img src="IMAGES/img6.jpg" alt="pic1" width="800px" height="450px"><br>
+                    <br>
+        
+        
+        
+        
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                      Event Poster
+                    </button>
+        
+        
+                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Event Poster</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <img src="IMAGES/img6.jpg" alt="pic">
+        
+        
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        </div>
 
 </body>
 </html>
