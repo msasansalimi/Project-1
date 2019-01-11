@@ -1,3 +1,16 @@
 body {
     background-color:royalblue;
+    
+}
+
+#eventDisplay {
+    box-sizing: border-box;
+}
+
+.buyBtn {
+    
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+
 }
