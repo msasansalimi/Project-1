@@ -107,6 +107,20 @@ var ticketmasterCountries = [
     {"code":"VE","name":"venezuela"},		
 ]
 
+
+
+ //grab fb data
+ var database=firebase.database();
+ database.ref("/countries/country_list").on("child_added",function(snapshot){
+
+
+    var option= document.createElement("option")
+    option.setAttribute("value",snapshot.val().code)
+    option.setAttribute("class", "list")
+    option.textContent=snapshot.val().name
+    document.getElementById("eventCountry").append(option)
+
+   }) 
 //2. Search Event listeners
 
 $("#eventSearch").on("click",function(){
@@ -340,20 +354,9 @@ function getEvents(){
       };
       firebase.initializeApp(config);
 
-    var database=firebase.database();
+   
 
-    //grab fb data
-    
-    database.ref("/countries/country_list").on("child_added",function(snapshot){
-
-
-        var option= document.createElement("option")
-        option.setAttribute("value",snapshot.val().code)
-        option.setAttribute("class", "list")
-        option.textContent=snapshot.val().name
-        document.getElementById("eventCountry").append(option)
-    
-       }) */
+   
  
   
       
