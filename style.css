@@ -1,5 +1,12 @@
 body {
     background-color:royalblue;
+
+}
+#change_default{
+    background-color: grey;
+    color: white;
+}
+
     
 }
 
@@ -29,3 +36,4 @@ body {
 .fav_button_clicked{
     background-color: gold !important;
 }
+
