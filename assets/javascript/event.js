@@ -133,11 +133,11 @@ $("#eventSearch").on("click",function(){
 
 }); //end of event search by country, state, city
 
-$("#search-bar").on("click",function(){
+$(".search-bar").on("click",function(){
     $("#eventDisplay").empty();
     keywordSearch();
     getEvents();
-    $("#key-word").val("");
+    $(".key-word").val("");
 }); //end of key word search
 
 //3. Functions
@@ -187,7 +187,7 @@ function keywordSearch(){
      
     //capture search values
  
-     keywordSearch = $("#country").val().trim().toLowerCase();
+     keywordSearch = $(".key-word").val().trim().toLowerCase();
      console.log("Key word is: " + keywordSearch);
 
      searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&keyWord=" + keywordSearch;
