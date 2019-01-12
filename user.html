@@ -20,21 +20,33 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home</a>
-                <a class="nav-item nav-link active" href="#">Events</a>
-                <a class="nav-item nav-link active" href="#">Currency</a>
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="index.html">Home</a>
+            <button type="button" id="create_user" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              Create Account
+            </button>
+            <button type="button" id="sign-in" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              Sign-in
+            </button>
+            <div class="dropdown" id="log-in-drop">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="Favourite" href="#">User Page</a>
+                <a class="dropdown-item" id="Log-out" href="#">Log-Out</a>
+              </div>
             </div>
+          
+          </div>
         </div>
         <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-bar">Search</button>
-        </form>
-    </nav>
+          <input class="form-control mr-sm-2 flexdatalist"  id="new_default" type="search" placeholder="Search" aria-label="Search" list='currency' name="currnecy">
+          <button type="button" class="btn btn-outline-success my-2 my-sm-0" id="change_default">Apply</button>    </form>
+      </nav>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="text-center">User Page! (Think up of a better title!)</h1>
