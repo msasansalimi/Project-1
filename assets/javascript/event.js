@@ -171,7 +171,7 @@ function keywordSearch(){
      
     //capture search values
  
-     keywordSearch = $("#key-word").val().trim().toLowerCase();
+     keywordSearch = $("#country").val().trim().toLowerCase();
      console.log("Key word is: " + keywordSearch);
 
      searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&keyWord=" + keywordSearch;
@@ -228,8 +228,9 @@ function getEvents(){
                 //display results on page.
 
                        
-
+                // Ramon edit added the header for the card and the button to fav something
                 var newEvent = $("<div>");
+                newEvent.attr("id",eventResults[i].id)
                 newEvent.addClass("card float-sm-left float-md-left float-lg-left");
                 newEvent.css("width", "22rem");
                 newEvent.css("height", "30rem");
@@ -242,23 +243,31 @@ function getEvents(){
 
                 var newEventcardbody = $("<div>");
                 newEventcardbody.addClass("card-body");
-                newEventcardbody.attr("data-min", EventMinPrice);
-                newEventcardbody.attr("data-max", eventMaxPrice);
 
+                var newEventcardhead=$("<div>");
+                newEventcardhead.addClass("card-head");
                         
                 var neweventTitle = $("<h5>");
                 neweventTitle.addClass("card-title");
                 newEvent.css("font-size", "20px");
                 neweventTitle.text(eventResults[i].name);
 
+                var fav=$("<button>");
+                fav.addClass("btn btn-primary favorite");
+                fav.attr("event_id",eventResults[i].id)
+                fav.text("fav")
+
                 var neweventDetails = $("<p>");
                 neweventDetails.addClass("card-text");
                 neweventDetails.css("font-size", "16px");
                 neweventDetails.text(eventVenue);
-
+                  // Ramon edit added the attributes for the currency converter here and for the div that holds the cards in the button
                 var newEventPrice = $("<p>");
                 newEventPrice.addClass("card-text");
                 newEventPrice.css("font-size", "16px");
+                newEventPrice.addClass("price-range")
+                newEventPrice.attr("data-min", EventMinPrice);
+                newEventPrice.attr("data-max", eventMaxPrice);
                 newEventPrice.text("Price range: " + EventMinPrice + " to " + eventMaxPrice + " " + eventCurrency);
 
                 var newEventDate
@@ -273,6 +282,11 @@ function getEvents(){
                 buyTickets.attr("href", eventResults[i].url);
                 buyTickets.text("Buy Tickets");
 
+
+
+                //append to head
+                newEventcardhead.append(neweventTitle)
+                newEventcardhead.append(fav)
                 //append event details to card body    
                         
                 newEventcardbody.append(neweventDetails);
@@ -281,7 +295,7 @@ function getEvents(){
                 newEventcardbody.append(buyTickets);
 
                 //append image and card body to card
-                newEvent.append(neweventTitle);
+                newEvent.append(newEventcardhead);
                 newEvent.append(newEventImage);
                 newEvent.append(newEventcardbody);
                         
@@ -289,7 +303,8 @@ function getEvents(){
                 //append card to html
 
                 $("#eventDisplay").append(newEvent);
-
+                /// currency for convertion
+                $("#eventDisplay").attr("data-currency", eventCurrency);
                 //clear float
 
                 var clearFloat = $("<div>");

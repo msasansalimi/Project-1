@@ -15,7 +15,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="assets/jquery-flexdatalist-2.2.4/jquery.flexdatalist.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
-  <script src="assets/javascript/event.js"></script> <!--Eventful API link-->
+  <script src="assets/javascript/main.js"></script> 
+  <script src="assets/javascript/currency.js"></script> 
+  <script src="assets/javascript/event.js"></script> 
   <!-- <script src="assets/javascript/currency.js"></script> -->
 
    <!-- Moment.js Reference -->
@@ -31,15 +33,26 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link active" href="#">Home</a>
-        <a class="nav-item nav-link active" href="#">Events</a>
-        <a class="nav-item nav-link active" href="#">Currency</a>
-
+        <button type="button" id="create_user" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          Create Account
+        </button>
+        <button type="button" id="sign-in" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          Sign-in
+        </button>
+        <div class="dropdown" id="log-in-drop">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="Favourite" href="#">User Page</a>
+            <a class="dropdown-item" id="Log-out" href="#">Log-Out</a>
+          </div>
+        </div>
+      
       </div>
     </div>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" id="key-word" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-bar">Search</button>
-    </form>
+      <input class="form-control mr-sm-2 flexdatalist"  id="new_default" type="search" placeholder="Search" aria-label="Search" list='currency' name="currnecy">
+      <button type="button" class="btn btn-outline-success my-2 my-sm-0" id="change_default">Apply</button>    </form>
   </nav>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -60,7 +73,7 @@
               <div class="form-row">
                 <div class="col-12">
                   <label for="amount" class="convertorform-label">Amount</label>
-                  <input type="text" class="form-control">
+                  <input type="text" id="amount"class="form-control">
                 </div>
                 <div class="col-12">
                   <label for="from" class="convertorform-label">From</label>
@@ -127,7 +140,7 @@
 
       <div class="event-poster" id="eventDisplay">
 
-        <div class="card">
+        <!-- <div class="card">
           <div class="card-body">
             <h2 class="text-center">Images relevent to the selected event!</h2>
 
@@ -164,7 +177,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -172,6 +185,12 @@
 
 
   </div>
+
+
+
+
+
+  
   <datalist id="currency">
   </datalist>
   
@@ -182,6 +201,38 @@
   
   <datalist id="eventState"> </datalist>
   
+  <!-- Auth modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="Title">hi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group input-group-sm mb-3" id="name_box">
+          </div>
+          <div class="input-group input-group-sm mb-3">
+            <input type="text" id="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+              placeholder="Email">
+          </div>
+          <div class="input-group input-group-sm mb-3">
+            <input type="text" id="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+              placeholder="Password">
+          </div>
+  
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="google_sign" data-toggle="modal" data-target="#exampleModalCenter">Sign
+            in With Google</button>
+          <button type="button" class="btn btn-primary" id="task_button" data-toggle="modal" data-target="#exampleModalCenter"></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
