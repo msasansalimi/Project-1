@@ -257,7 +257,6 @@ function getEvents(){
                 var newEvent = $("<div>");
                 newEvent.attr("id",eventResults[i].id)
                 newEvent.addClass("card float-sm-left float-md-left float-lg-left event");
-                newEvent.attr("data-currency", eventCurrency);
                 newEvent.css("width", "22rem");
                 newEvent.css("height", "30rem");
                 newEvent.css("margin-right", "10px");
