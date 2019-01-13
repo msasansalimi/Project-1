@@ -256,7 +256,8 @@ function getEvents(){
                 // Ramon edit added the header for the card and the button to fav something
                 var newEvent = $("<div>");
                 newEvent.attr("id",eventResults[i].id)
-                newEvent.addClass("card float-sm-left float-md-left float-lg-left");
+                newEvent.addClass("card float-sm-left float-md-left float-lg-left event");
+                newEvent.attr("data-currency", eventCurrency);
                 newEvent.css("width", "22rem");
                 newEvent.css("height", "30rem");
                 newEvent.css("margin-right", "10px");
@@ -290,7 +291,8 @@ function getEvents(){
                 var newEventPrice = $("<p>");
                 newEventPrice.addClass("card-text");
                 newEventPrice.css("font-size", "16px");
-                newEventPrice.addClass("price-range")
+                newEventPrice.addClass("price-range");
+                newEventPrice.attr("data-currency", eventCurrency);
                 newEventPrice.attr("data-min", EventMinPrice);
                 newEventPrice.attr("data-max", eventMaxPrice);
                 newEventPrice.text("Price range: " + EventMinPrice + " to " + eventMaxPrice + " " + eventCurrency);
@@ -329,7 +331,7 @@ function getEvents(){
 
                 $("#eventDisplay").append(newEvent);
                 /// currency for convertion
-                $("#eventDisplay").attr("data-currency", eventCurrency);
+               
                 //clear float
 
                 var clearFloat = $("<div>");
