@@ -39,4 +39,7 @@ body {
 .fav_button_clicked{
     background-color: gold !important;
 }
+.navbar_toggler:hover {
+    background-color: grey;
+}
 
