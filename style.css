@@ -8,13 +8,10 @@ body {
 }
 
     
-}
-<<<<<<< HEAD
 #search-bar {
     background-color: grey;
     color: white;
 }
-=======
 
 #eventDisplay {
     box-sizing: border-box;
@@ -42,5 +39,7 @@ body {
 .fav_button_clicked{
     background-color: gold !important;
 }
+.navbar_toggler:hover {
+    background-color: grey;
+}
 
->>>>>>> cbcbc4b1cc7ff08580d04ce2beaf92ac04a8d3e0

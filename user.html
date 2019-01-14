@@ -55,65 +55,67 @@
             <h1 class="text-center">User Page! (Think up of a better title!)</h1>
         </div>
     </div>
-    <!-- <div class="container">
-        <div class="row">
-        <div class="col-3">
-            <div class="card text-center">
-            <div class="card-header">
-                <h2>Currency Convertor</h2>
-            </div>
-        
-            <div class="card-body">
-                <nav class="nav flex-column">
-                    <form>
-                        <div class="form-row">
-                            <div class="col-12">
-                            <label for="amount" class="convertorform-label">Amount</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-12">
-                            <label for="from" class="convertorform-label">From</label>
-                            <input type="text" class="form-control flexdatalist" data-min-length='1'
-                            list='currency'
-                            name="currnecy"
-                            id="from" >
-                        </div>
-                        <div class="col-12">
-                            <label for="to" class="convertorto-label">To</label>
-                            <input type="text" class="form-control  flexdatalist" data-min-length='1'
-                            list='currency'
-                            name="currnecy"
-                            id="to">
-                        </div>
-                        </div>
-                        <br>
-                        <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
-                    </form>
-                </nav>
-            </div>
-            <div class="card-footer">
-                <button type="button" id="convert" class="btn btn-primary">Convert</button>
-            </div>
-        </div>
-    </div> -->
 
     <!--Sidebar-->
-    <div class="container">
-        <div class="row">
-            <div class="col-3">
-                <div class="container">
-                    <div id="theme_list" class="row">
-                        <div id="button_holder" class="col-md-12"></div>
+
+    <div class="row">
+        <div class="col-12 col-sm-4">
+
+            <div class="card text-center">
+                <div class="card-header">
+                    <h2>Event Location</h2>
+                </div>
+
+                <div class="card-body">
+                    <div class="col-12">
+                        <label for="defaul-input" class="convertorform-label">Default Input</label>
+                        <input type="text" id="amount" class="form-control"><br>
+                        <button type="button" class="btn btn-primary" id="defaul-input">Click!</button>
+                        <hr>
                     </div>
-                    <div class="row" id="main">
-                        <div class="col-sm-8">
-                            <div id="currencyConverterHolder"></div>
-                        </div>
-                        <div id="sidebar" class="col-sm-4 pos-f-t">
-                            <div class="pos-f-t">
-                                <h5>Toggle Currency Converter</h5>
+
+                    <nav class="nav flex-column">
+                        <form>
+                            <div class="form-row">
+
+                                <div class="col-12">
+                                    <label for="amount" class="convertorform-label"></label>
+                                    <input type="text" id="country" class="form-control flexdatalist" data-min-length='1'
+                                        list='eventCountry' name="eventCountry" placeholder="Country">
+                                </div>
+                                <div class="col-12">
+                                    <label for="from" class="convertorform-label"></label>
+                                    <input type="text" id="state" class="form-control" placeholder="State">
+                                </div>
+                                <div class="col-12">
+                                    <label for="to" class="convertorto-label"></label>
+                                    <input type="text" id="city" class="form-control" placeholder="City">
+                                </div>
+
+                            </div>
+                            <br>
+                            <button type="button" id="eventSearch" class="btn btn-primary">Search</button><br>
+                            <br>
+                            <hr>
+                        </form>
+                    </nav>
+
+                </div>
+
+                <!--  <div class="card-footer"> -->
+
+
+                <!-- </div> -->
+                <div class="card-header">
+                    <h2>Currency Convertor</h2>
+                </div>
+                <div class="card-body">
+
+
+                        <div class="col-sm-12 pos-f-t" id="sidebar">
+                    
                                 <div class="row collapse show" id="navbarToggleExternalContent">
-                                    <div class="col-sm-12 sidebar_content">
+                                    <div class="col-12 sidebar_content">
                                         <form>
                                             <div class="form-row">
                                                 <div class="col-12">
@@ -122,19 +124,21 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="from" class="convertorform-label">From</label>
-                                                    <input type="text" class="form-control flexdatalist"
-                                                        data-min-length='1' list='currency' name="currnecy" id="from">
+                                                    <input type="text" class="form-control flexdatalist" data-min-length='1'
+                                                        list='currency' name="currnecy" id="from">
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="to" class="convertorto-label">To</label>
-                                                    <input type="text" class="form-control  flexdatalist"
-                                                        data-min-length='1' list='currency' name="currnecy" id="to">
+                                                    <input type="text" class="form-control  flexdatalist" data-min-length='1'
+                                                        list='currency' name="currnecy" id="to">
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                             <br>
                                             <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
                                         </form>
                                     </div>
+                                    <button type="button" id="convert" class="btn btn-primary col-12">Convert</button><br>
+                                    <br>
                                 </div>
                                 <nav class="navbar navbar_dark">
                                     <button class="navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
@@ -142,50 +146,121 @@
                                         <span class="navbar-toggler-icon"></span>
                                     </button>
                                 </nav>
-                            </div>
-                        </div>
-                    </div>
+                        </div>  
+                   
                 </div>
             </div>
+        </div>
 
 
-            <!--Card for saved events-->
-            <div class="col=9">
-                <div class="event-poster" id="eventDisplay">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="text-center">Saved Events!</h2>
-                            <img src="IMAGES/img6.jpg" alt="pic1" width="800px" height="450px"><br>
-                            <br>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Event
-                                Poster</button>
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Event Poster</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="IMAGES/img6.jpg" alt="pic">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
+
+
+
+
+
+
+        <!--Card for saved events-->
+        <div class="col-12 col-sm-8">
+
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center">Saved Events!</h2>
+                    <img src="IMAGES/img6.jpg" alt="pic1" width="800px" height="450px"><br>
+                    <br>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Event
+                        Poster</button>
+                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Event Poster</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="IMAGES/img6.jpg" alt="pic">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 
 
 </body>
 
 </html>
+
+<!--            <div class="col-sm-4 pos-f-t" id "sidebar">
+                    
+                        <div class="row collapse show" id="navbarToggleExternalContent">
+                            <div class="col-sm-12 sidebar_content">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <label for="amount" class="convertorform-label">Amount</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="from" class="convertorform-label">From</label>
+                                            <input type="text" class="form-control flexdatalist" data-min-length='1'
+                                                list='currency' name="currnecy" id="from">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="to" class="convertorto-label">To</label>
+                                            <input type="text" class="form-control  flexdatalist" data-min-length='1'
+                                                list='currency' name="currnecy" id="to">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
+                                </form>
+                            </div>
+                        </div>
+                        <nav class="navbar navbar_dark">
+                            <button class="navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </nav>
+                    
+                </div> -->
+
+
+<!--  <nav class="nav flex-column">
+                    <form>
+                        <div class="col-12">
+                            <label for="defaul-input" class="convertorform-label">Default Input</label>
+                            <input type="text" id="amount" class="form-control"><br>
+                            <button type="button" class="btn btn-primary" id="defaul-input">Click!</button>
+                            <hr>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <label for="amount" class="convertorform-label">Amount</label>
+                                <input type="text" id="amount" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label for="from" class="convertorform-label">From</label>
+                                <input type="text" class="form-control flexdatalist" data-min-length='1' list='currency'
+                                    name="currnecy" id="from">
+                            </div>
+                            <div class="col-12">
+                                <label for="to" class="convertorto-label">To</label>
+                                <input type="text" class="form-control  flexdatalist" data-min-length='1' list='currency'
+                                    name="currnecy" id="to">
+                            </div>
+                        </div>
+                        <br>
+                        <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
+                    </form>
+                </nav> -->
