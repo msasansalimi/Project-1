@@ -43,3 +43,6 @@ body {
     background-color: grey;
 }
 
+.navbar_toggler {
+    margin: auto;
+}

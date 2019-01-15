@@ -52,7 +52,7 @@
     </nav>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="text-center">User Page! (Think up of a better title!)</h1>
+            <h1 class="text-center">User Home Page!</h1>
         </div>
     </div>
 
@@ -62,18 +62,26 @@
         <div class="col-12 col-sm-4">
 
             <div class="card text-center">
-                <div class="card-header">
-                    <h2>Event Location</h2>
-                </div>
+                
 
                 <div class="card-body">
+                        <div class="card-header">
+                            <h2>Default Currency Input</h2>
+                        </div>
+                        <br>
                     <div class="col-12">
-                        <label for="defaul-input" class="convertorform-label">Default Input</label>
+                        <!-- <label for="defaul-input" class="convertorform-label">Default Input</label> -->
                         <input type="text" id="amount" class="form-control"><br>
                         <button type="button" class="btn btn-primary" id="defaul-input">Click!</button>
                         <hr>
                     </div>
 
+
+
+
+                    <div class="card-header">
+                        <h2>Event Location</h2>
+                    </div>
                     <nav class="nav flex-column">
                         <form>
                             <div class="form-row">
@@ -107,47 +115,47 @@
 
                 <!-- </div> -->
                 <div class="card-header">
-                    <h2>Currency Convertor</h2>
+                    <h2>Currency Converter</h2>
                 </div>
                 <div class="card-body">
 
 
-                        <div class="col-sm-12 pos-f-t" id="sidebar">
-                    
-                                <div class="row collapse show" id="navbarToggleExternalContent">
-                                    <div class="col-12 sidebar_content">
-                                        <form>
-                                            <div class="form-row">
-                                                <div class="col-12">
-                                                    <label for="amount" class="convertorform-label">Amount</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-12">
-                                                    <label for="from" class="convertorform-label">From</label>
-                                                    <input type="text" class="form-control flexdatalist" data-min-length='1'
-                                                        list='currency' name="currnecy" id="from">
-                                                </div>
-                                                <div class="col-12">
-                                                    <label for="to" class="convertorto-label">To</label>
-                                                    <input type="text" class="form-control  flexdatalist" data-min-length='1'
-                                                        list='currency' name="currnecy" id="to">
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
-                                        </form>
+                    <div class="col-sm-12 pos-f-t" id="sidebar">
+
+                        <div class="row collapse show" id="navbarToggleExternalContent">
+                            <div class="col-12 sidebar_content">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <label for="amount" class="convertorform-label">Amount</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="from" class="convertorform-label">From</label>
+                                            <input type="text" class="form-control flexdatalist" data-min-length='1'
+                                                list='currency' name="currnecy" id="from">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="to" class="convertorto-label">To</label>
+                                            <input type="text" class="form-control  flexdatalist" data-min-length='1'
+                                                list='currency' name="currnecy" id="to">
+                                        </div>
                                     </div>
-                                    <button type="button" id="convert" class="btn btn-primary col-12">Convert</button><br>
                                     <br>
-                                </div>
-                                <nav class="navbar navbar_dark">
-                                    <button class="navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-                                        aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
-                                </nav>
-                        </div>  
-                   
+                                    <h1 id="equal"><strong>=<span id="converted-amount"></span></strong></h1>
+                                </form>
+                            </div>
+                            <button type="button" id="convert" class="btn btn-primary col-12">Convert</button><br>
+                            <br>
+                        </div>
+                        <nav class="navbar navbar_dark">
+                            <button class="navbar_toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <!-- <span class="navbar-toggler-icon"></span>-->Toggle Currency Converter
+                            </button>
+                        </nav>
+                    </div>
+
                 </div>
             </div>
         </div>
