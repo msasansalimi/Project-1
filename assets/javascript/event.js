@@ -271,16 +271,26 @@ function getEvents(){
 
                 var newEventcardhead=$("<div>");
                 newEventcardhead.addClass("card-head");
-                        
+                
+
                 var neweventTitle = $("<h5>");
                 neweventTitle.addClass("card-title");
                 newEvent.css("font-size", "20px");
                 neweventTitle.text(eventResults[i].name);
+                
+
+                var newfav = $("<h5>");
+                newfav.css("color", "orange");
+                newfav.css("font-size", "20px");
+                newfav.addClass("newfav favorite");
+                newfav.append('<i class="fas fa-heart"></i>');
+                newfav.attr("event_id",eventResults[i].id)
+              
 
                 var fav=$("<button>");
                 fav.addClass("btn btn-primary favorite");
                 fav.attr("event_id",eventResults[i].id)
-                fav.text("fav")
+                fav.text("fav") 
 
                 var neweventDetails = $("<p>");
                 neweventDetails.addClass("card-text");
@@ -312,6 +322,7 @@ function getEvents(){
 
                 //append to head
                 newEventcardhead.append(neweventTitle)
+                newEventcardhead.append(newfav);
                 newEventcardhead.append(fav)
                 //append event details to card body    
                         

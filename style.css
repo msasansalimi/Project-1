@@ -24,6 +24,15 @@ body {
         right: 10px;
 
 }
+
+.newfav {
+    
+    position: absolute;
+    top: 5px;
+    right: 10px;
+
+}
+
  #log-in-drop{
      display: none;
  }
