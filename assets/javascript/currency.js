@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     })
 
-    function Ajax_call(from, to,callback) {
+    function Ajax_call(from, to,list,callback) {
         var q = from + "_" + to
         console.log(q)
         var queryUrl = "https://free.currencyconverterapi.com/api/v6/convert?q=" + q
@@ -29,57 +29,103 @@ $(document).ready(function () {
             console.log(response)
             console.log(q)
             var rate = response.results[q].val
-            callback(rate)
+            done=true
+            callback(rate,list)
         })
     }
 
     function Converstion() {
-        
+     
         var task = this.getAttribute("id")
         console.log(task)
         switch (task) {
             case "convert":
-
+ 
                 var from = document.getElementById("from").value
                 var to = document.getElementById("to").value
-             
-                 Ajax_call(from, to, function(rate){
+                var list= document.getElementById("converted-amount")
+                 Ajax_call(from, to,list, function(rate,list){
                     console.log(rate)
                     var amount = parseFloat(document.getElementById("amount").value)
                     console.log(amount)
                     var converstion = (rate * amount).toFixed(2)
 
-                    document.getElementById("converted-amount").textContent = converstion
+                   list.textContent = converstion
                 })
 
                 break;
-            case "change_default":
-            var task = this.getAttribute("id")
-            var from = document.getElementById("eventDisplay").getAttribute("data-currency")
-            var to = document.getElementById("new_default").value
-            document.getElementById("eventDisplay").setAttribute("data-currency",to)
-            Ajax_call(from, to, function(rate,to){
-                var list = document.getElementsByClassName("price-range")
-                for (var i = 0; i < list.length; i++) {
-                    var price = {
-                        max: parseFloat(list[i].getAttribute("data-max")),
-                        min: parseFloat(list[i].getAttribute("data-min")),
+            case "default-input":
+           
+        
+            var to = document.getElementById("default").value 
+            var grp_1={
+                code:"",
+                event_list:[]
+            }
+            var grp_list=[grp_1]
+            var events=document.getElementsByClassName("price-range")
+            for(var i=0;i<events.length;i++){// through every events
+                var new_currency=true;
+                if(i===0){
+                    grp_1.code=events[i].getAttribute("data-currency")
+                    grp_1.event_list.push(events[i])
+                }
+                else if(i>0){
+               
+               grp_list.forEach(function(grp){
+                //for every diffrent type of code on the screen
+                    if(events[i].getAttribute("data-currency")===grp.code){
+                        grp.event_list.push(events[i])
+                        new_currency=false;
                     }
+                })
+                if(new_currency){//if we get a new currency
+                    var new_grp=Object.create(grp_1)
+                    new_grp.code=events[i].getAttribute("data-currency")
+                    new_grp.event_list=[]
+                    new_grp.event_list.push(events[i])
+                    grp_list.push(new_grp)
+                }
+        
+               }
+              
+            }
+            console.log(grp_list) 
+            for (var i = 0; i < grp_list.length; i++) {   
+            var from =grp_list[i].code  
+            
+           
+                    //for every event in that code currency code
+       
+        
+            Ajax_call(from, to,grp_list[i], function(rate,list){
+                console.log(list)
+                list.event_list.forEach(function(event){
+                    var price = {
+                        max: parseFloat(event.getAttribute("data-max")),
+                        min: parseFloat(event.getAttribute("data-min")),
+                    }
+                    
                     price.max = (price.max * rate).toFixed(2)
                     price.min = (price.min * rate).toFixed(2)
-                    list[i].setAttribute("data-min",price.min)
-                    list[i].setAttribute("data-min", price.max)
-                    list[i].textContent = "Price range: " + price.min + " to " + price.max + " " +  document.getElementById("eventDisplay").getAttribute("data-currency")
-                }
-            })   
-
-
-         
-
-               
+                    event.setAttribute("data-min",price.min)
+                    event.setAttribute("data-min", price.max)
+                    event.setAttribute("data-currency", to)
+                    event.textContent = "Price range: " + price.min + " to " + price.max + " " +  to
+                 
+                
+                })  
+            
+             })
+          
+            }        
         }
+        
     }
-    document.getElementById("change_default").addEventListener("click", Converstion)
+
+ 
+  
+    document.getElementById("default-input").addEventListener("click", Converstion)
     //need a button to do these
     document.getElementById("convert").addEventListener("click", Converstion)
     // document.getElementById("new_default").addEventListener("input",myfunction)
@@ -91,7 +137,6 @@ $(document).ready(function () {
         minLength: 1,
         valueProperty: "value"
     });
-
 
 
 })
