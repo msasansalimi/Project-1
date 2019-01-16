@@ -46,6 +46,7 @@ $(document).ready(function () {
                 var list= document.getElementById("converted-amount")
                  Ajax_call(from, to,list, function(rate,list){
                     console.log(rate)
+                    console.log(document.getElementById("amount").value)
                     var amount = parseFloat(document.getElementById("amount").value)
                     console.log(amount)
                     var converstion = (rate * amount).toFixed(2)
