@@ -410,6 +410,7 @@ function getEvents(){
                 newEventPrice.addClass("card-text");
                 newEventPrice.css("font-size", "16px");
                 newEventPrice.addClass("price-range")
+                newEventPrice.attr("data-currency", eventCurrency);
                 newEventPrice.attr("data-min", EventMinPrice);
                 newEventPrice.attr("data-max", eventMaxPrice);
                 newEventPrice.text("Price range: " + EventMinPrice + " to " + eventMaxPrice + " " + eventCurrency);
@@ -466,5 +467,19 @@ function getEvents(){
     }// close function
 
  
- 
+    document.getElementById("eventDisplay").addEventListener("click",function(event){
+        console.log(event.target)
+        //check for button
+        if(event.target.hasAttribute("event_id")){
+            console.log("yes")  
+            //check if they logged in
+            if(user.uid!=""){
+            database.ref("/users/"+user.uid+"/favorite").push({
+                //push id
+                    event_id:event.target.getAttribute("event_id")
+            })
+            user.user_fav_list.push(event.target.getAttribute("event_id"))
+            }
+        }
+    })
 }); //End of Document ready
