@@ -21,92 +21,6 @@ var stateCode = "";
 var eventCity="";
 var searchURL="";
 var keyWord = "";
-var ticketmasterCountries = [
-    {"code":"US","name":"united states of america"},		
-    {"code":"AD","name":"andorra"},		
-    {"code":"AI","name":"anguilla"},		
-    {"code":"AR","name":"argentina"},		
-    {"code":"AU","name":"australia"},		
-    {"code":"AT","name":"austria"},		
-    {"code":"AZ","name":"azerbaijan"},		
-    {"code":"BS","name":"bahamas"},		
-    {"code":"BH","name":"bahrain"},		
-    {"code":"BB","name":"barbados"},		
-    {"code":"BE","name":"belgium"},		
-    {"code":"BM","name":"bermuda"},		
-    {"code":"BR","name":"brazil"},		
-    {"code":"BG","name":"bulgaria"},		
-    {"code":"CA","name":"Canada"},		
-    {"code":"CL","name":"Chile"},		
-    {"code":"CN","name":"China"},		
-    {"code":"CO","name":"Colombia"},		
-    {"code":"CR","name":"Costa rica"},		
-    {"code":"HR","name":"Croatia"},		
-    {"code":"CY","name":"Cyprus"},		
-    {"code":"CZ","name":"Czech republic"},		
-    {"code":"DK","name":"denmark"},		
-    {"code":"DO","name":"dominican republic"},		
-    {"code":"EC","name":"ecuador"},		
-    {"code":"EE","name":"estonia"},		
-    {"code":"FO","name":"faroe islands"},		
-    {"code":"FI","name":"finland"},		
-    {"code":"FR","name":"france"},		
-    {"code":"GE","name":"georgia"},		
-    {"code":"DE","name":"germany"},		
-    {"code":"GH","name":"ghana"},		
-    {"code":"GI","name":"gibraltar"},		
-    {"code":"GB","name":"great britain"},		
-    {"code":"GR","name":"greece"},		
-    {"code":"HK","name":"hong kong"},		
-    {"code":"HU","name":"hungary"},		
-    {"code":"IS","name":"iceland"},		
-    {"code":"IN","name":"india"},		
-    {"code":"IE","name":"ireland"},		
-    {"code":"IL","name":"israel"},		
-    {"code":"IT","name":"italy"},		
-    {"code":"JM","name":"jamaica"},		
-    {"code":"JP","name":"japan"},		
-    {"code":"KR","name":"korea"},
-    {"code":"LV","name":"latvia"},		
-    {"code":"LB","name":"lebanon"},		
-    {"code":"LT","name":"lithuania"},		
-    {"code":"LU","name":"luxembourg"},		
-    {"code":"MY","name":"malaysia"},		
-    {"code":"MT","name":"malta"},		
-    {"code":"MX","name":"mexico"},		
-    {"code":"MC","name":"monaco"},		
-    {"code":"ME","name":"montenegro"},		
-    {"code":"MA","name":"morocco"},		
-    {"code":"NL","name":"netherlands"},		
-    {"code":"AN","name":"netherlands antilles"},		
-    {"code":"NZ","name":"new zealand"},		
-    {"code":"ND","name":"northern ireland"},		
-    {"code":"NO","name":"norway"},		
-    {"code":"PE","name":"peru"},		
-    {"code":"PL","name":"poland"},		
-    {"code":"PT","name":"portugal"},		
-    {"code":"RO","name":"romania"},		
-    {"code":"RU","name":"russian federation"},		
-    {"code":"LC","name":"saint lucia"},		
-    {"code":"SA","name":"saudi arabia"},		
-    {"code":"RS","name":"serbia"},		
-    {"code":"SG","name":"singapore"},		
-    {"code":"SK","name":"slovakia"},		
-    {"code":"SI","name":"slovenia"},		
-    {"code":"ZA","name":"south africa"},		
-    {"code":"ES","name":"spain"},		
-    {"code":"SE","name":"sweden"},		
-    {"code":"CH","name":"switzerland"},		
-    {"code":"TW","name":"taiwan"},		
-    {"code":"TH","name":"thailand"},		
-    {"code":"TT","name":"trinidad and tobago"},		
-    {"code":"TR","name":"turkey"},		
-    {"code":"UA","name":"ukraine"},		
-    {"code":"AE","name":"united arab emirates"},		
-    {"code":"UY","name":"uruguay"},		
-    {"code":"VE","name":"venezuela"},		
-]
-
 
 
  //grab fb data
@@ -256,7 +170,7 @@ function getEvents(){
                 // Ramon edit added the header for the card and the button to fav something
                 var newEvent = $("<div>");
                 newEvent.attr("id",eventResults[i].id)
-                newEvent.addClass("card float-sm-left float-md-left float-lg-left");
+                newEvent.addClass("card float-sm-left float-md-left float-lg-left event");
                 newEvent.css("width", "22rem");
                 newEvent.css("height", "30rem");
                 newEvent.css("margin-right", "10px");
@@ -271,16 +185,28 @@ function getEvents(){
 
                 var newEventcardhead=$("<div>");
                 newEventcardhead.addClass("card-head");
-                        
+                
+
                 var neweventTitle = $("<h5>");
                 neweventTitle.addClass("card-title");
                 newEvent.css("font-size", "20px");
                 neweventTitle.text(eventResults[i].name);
+                
+
+                var newfav = $("<h5>");
+                newfav.css("color", "orange");
+                newfav.css("font-size", "20px");
+                newfav.addClass("newfav favorite");
+                newfav.append('<i class="far fa-heart"></i>');
+                //change to this when selected <i class="fas fa-heart"></i>
+
+                newfav.attr("event_id",eventResults[i].id)
+              
 
                 var fav=$("<button>");
                 fav.addClass("btn btn-primary favorite");
                 fav.attr("event_id",eventResults[i].id)
-                fav.text("fav")
+                fav.text("fav") 
 
                 var neweventDetails = $("<p>");
                 neweventDetails.addClass("card-text");
@@ -290,7 +216,8 @@ function getEvents(){
                 var newEventPrice = $("<p>");
                 newEventPrice.addClass("card-text");
                 newEventPrice.css("font-size", "16px");
-                newEventPrice.addClass("price-range")
+                newEventPrice.addClass("price-range");
+                newEventPrice.attr("data-currency", eventCurrency);
                 newEventPrice.attr("data-min", EventMinPrice);
                 newEventPrice.attr("data-max", eventMaxPrice);
                 newEventPrice.text("Price range: " + EventMinPrice + " to " + eventMaxPrice + " " + eventCurrency);
@@ -311,6 +238,7 @@ function getEvents(){
 
                 //append to head
                 newEventcardhead.append(neweventTitle)
+                newEventcardhead.append(newfav);
                 newEventcardhead.append(fav)
                 //append event details to card body    
                         
@@ -329,7 +257,7 @@ function getEvents(){
 
                 $("#eventDisplay").append(newEvent);
                 /// currency for convertion
-                $("#eventDisplay").attr("data-currency", eventCurrency);
+               
                 //clear float
 
                 var clearFloat = $("<div>");

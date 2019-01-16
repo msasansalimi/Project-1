@@ -1,6 +1,20 @@
 //after page loads
 $(document).ready(function(){
 
+//initialize firebase
+    var config = {
+        apiKey: "AIzaSyAm2DX2UmnZ1-IG1fWL4lFJWPvx2eXV5PU",
+        authDomain: "rps-game-ce388.firebaseapp.com",
+        databaseURL: "https://rps-game-ce388.firebaseio.com",
+        projectId: "rps-game-ce388",
+        storageBucket: "rps-game-ce388.appspot.com",
+        messagingSenderId: "138684371598"
+      };
+      firebase.initializeApp(config);
+
+   var database=firebase.database();
+    var auth=firebase.auth()
+
 //1. Declare variables
 
 
@@ -23,29 +37,25 @@ var searchURL="";
 var keyWord = "";
 var eventId;
 
+// clicking a button to sign-in or create user
+var log_out=document.getElementById("log-in-drop")
+var sign_in= document.getElementById("sign-in")
+var create= document.getElementById("create_user")
+
  //grab fb data
  var database=firebase.database();
- database.ref("/countries/country_list").on("child_added",function(snapshot){
-
-
-    var option= document.createElement("option")
-    option.setAttribute("value",snapshot.val().code)
-    option.setAttribute("class", "list")
-    option.textContent=snapshot.val().name
-    document.getElementById("eventCountry").append(option)
-
-   });
+ 
 
 //2. Search Event listeners
 
 //get eventId
 
 //Key Word search
-$(".search-bar").on("click",function(){
+$("#search-btn").on("click",function(){
     $("#eventDisplay").empty();
     keywordSearch();
     getEvents();
-    $(".key-word").val("");
+    $("#search-bar").val("");
 }); //end of key word search
 
 //3. Functions
@@ -230,5 +240,63 @@ function getEvents(){
 
     }// close function
 
+    //user events
+    var user={  uid:"",
+                   user_name:"",
+                   user_email:"",
+                   user_fav_list:[],
+                   update:function(user_info){
+                       this.uid=user_info.uid
+                       this.user_email=user_info.email
 
+                       //grab user name
+                       database.ref("/users/"+user.uid).on("value",function(snapshot){
+                           user.user_name=snapshot.val().user_name
+                           document.getElementById("dropdownMenuButton").textContent=snapshot.val().user_name
+                       })
+                       //grab user fav list
+                       database.ref("/users/"+user.uid+"/favorite").on("child_added",function(snaphot){
+                           user.user_fav_list.push(snaphot.val().event_id)
+                       })
+
+                   },
+                   user_logout:function(){
+                       this.uid=""
+                       this.user_email=""
+                       this.user_name=""
+                       this.user_fav_list=[]
+
+                   }
+
+       }
+
+
+    document.getElementById("Log-out").addEventListener("click", function () {
+       firebase.auth().signOut().then(function () {
+         user.user_logout();
+            document.getElementsByClassName("favorited").forEach(element => {
+                element.classList.toggle("favorited")
+            });
+           sign_in.style.display="block"
+           create.style.display="block"
+           log_out.style.display="none"
+           console.log("bye")
+       })
+
+     window.location.href="index.html"
+   })
+
+     firebase.auth().onAuthStateChanged(firebaseUser => {
+
+       if (firebaseUser) {
+          user.update(firebaseUser)
+          sign_in.style.display="none"
+          create.style.display="none"
+          log_out.style.display="block"
+
+
+       }
+   })
+
+ 
 }); //End of Document ready
