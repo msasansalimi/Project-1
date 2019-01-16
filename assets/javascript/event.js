@@ -169,7 +169,7 @@ function getEvents(){
                 newEvent.attr("id",eventResults[i].id)
                 newEvent.addClass("card float-sm-left float-md-left float-lg-left event");
                 newEvent.css("width", "22rem");
-                newEvent.css("height", "30rem");
+                newEvent.css("height", "35rem");
                 newEvent.css("margin-right", "10px");
                 newEvent.css("margin-bottom", "10px");
 
@@ -181,11 +181,11 @@ function getEvents(){
                 newEventcardbody.addClass("card-body");
 
                 var newEventcardhead=$("<div>");
-                newEventcardhead.addClass("card-head");
+                newEventcardhead.addClass("card-head event-head");
                 
 
                 var neweventTitle = $("<h5>");
-                neweventTitle.addClass("card-title");
+                neweventTitle.addClass("card-title event-title");
                 newEvent.css("font-size", "20px");
                 neweventTitle.text(eventResults[i].name);
                 
@@ -194,16 +194,17 @@ function getEvents(){
                 newfav.css("color", "red");
                 newfav.css("font-size", "24px");
                 newfav.addClass("newfav favorite");
-                newfav.append('<i class="far fa-heart"></i>');
+                // newfav.attr("event_id",eventResults[i].id)
+                var heart=$("<i>")
+                heart.addClass("far fa-heart")
+                heart.attr("event_id",eventResults[i].id)
+                newfav.append(heart);
                 //change to this when selected <i class="fas fa-heart"></i>
-
-                newfav.attr("event_id",eventResults[i].id)
-              
 
                 var fav=$("<button>");
                 fav.addClass("btn btn-primary favorite");
                 fav.attr("event_id",eventResults[i].id)
-                fav.text("fav") 
+                fav.text("fav")
 
                 var neweventDetails = $("<p>");
                 neweventDetails.addClass("card-text");
