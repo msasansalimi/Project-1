@@ -1,6 +1,20 @@
 //after page loads
 $(document).ready(function(){
 
+//initialize firebase
+    var config = {
+        apiKey: "AIzaSyAm2DX2UmnZ1-IG1fWL4lFJWPvx2eXV5PU",
+        authDomain: "rps-game-ce388.firebaseapp.com",
+        databaseURL: "https://rps-game-ce388.firebaseio.com",
+        projectId: "rps-game-ce388",
+        storageBucket: "rps-game-ce388.appspot.com",
+        messagingSenderId: "138684371598"
+      };
+      firebase.initializeApp(config);
+
+   var database=firebase.database();
+    var auth=firebase.auth()
+
 //1. Declare variables
 
 
@@ -23,29 +37,25 @@ var searchURL="";
 var keyWord = "";
 var eventId;
 
+// clicking a button to sign-in or create user
+var log_out=document.getElementById("log-in-drop")
+var sign_in= document.getElementById("sign-in")
+var create= document.getElementById("create_user")
+
  //grab fb data
  var database=firebase.database();
- database.ref("/countries/country_list").on("child_added",function(snapshot){
-
-
-    var option= document.createElement("option")
-    option.setAttribute("value",snapshot.val().code)
-    option.setAttribute("class", "list")
-    option.textContent=snapshot.val().name
-    document.getElementById("eventCountry").append(option)
-
-   });
+ 
 
 //2. Search Event listeners
 
 //get eventId
 
 //Key Word search
-$(".search-bar").on("click",function(){
+$("#search-btn").on("click",function(){
     $("#eventDisplay").empty();
     keywordSearch();
     getEvents();
-    $(".key-word").val("");
+    $("#search-bar").val("");
 }); //end of key word search
 
 //3. Functions
