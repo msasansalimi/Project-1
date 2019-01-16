@@ -190,9 +190,9 @@ function getEvents(){
                 neweventTitle.text(eventResults[i].name);
                 
 
-                var newfav = $("<h5>");
-                newfav.css("color", "orange");
-                newfav.css("font-size", "20px");
+                var newfav = $("<h3>");
+                newfav.css("color", "red");
+                newfav.css("font-size", "24px");
                 newfav.addClass("newfav favorite");
                 newfav.append('<i class="far fa-heart"></i>');
                 //change to this when selected <i class="fas fa-heart"></i>

@@ -36,7 +36,99 @@ var eventCity="";
 var searchURL="";
 var keyWord = "";
 var eventId;
+var ticketmasterCountries = [
+    {"code":"US","name":"united states of america"},		
+    {"code":"AD","name":"andorra"},		
+    {"code":"AI","name":"anguilla"},		
+    {"code":"AR","name":"argentina"},		
+    {"code":"AU","name":"australia"},		
+    {"code":"AT","name":"austria"},		
+    {"code":"AZ","name":"azerbaijan"},		
+    {"code":"BS","name":"bahamas"},		
+    {"code":"BH","name":"bahrain"},		
+    {"code":"BB","name":"barbados"},		
+    {"code":"BE","name":"belgium"},		
+    {"code":"BM","name":"bermuda"},		
+    {"code":"BR","name":"brazil"},		
+    {"code":"BG","name":"bulgaria"},		
+    {"code":"CA","name":"canada"},		
+    {"code":"CL","name":"chile"},		
+    {"code":"CN","name":"china"},		
+    {"code":"CO","name":"colombia"},		
+    {"code":"CR","name":"costa rica"},		
+    {"code":"HR","name":"croatia"},		
+    {"code":"CY","name":"cyprus"},		
+    {"code":"CZ","name":"czech republic"},		
+    {"code":"DK","name":"denmark"},		
+    {"code":"DO","name":"dominican republic"},		
+    {"code":"EC","name":"ecuador"},		
+    {"code":"EE","name":"estonia"},		
+    {"code":"FO","name":"faroe islands"},		
+    {"code":"FI","name":"finland"},		
+    {"code":"FR","name":"france"},		
+    {"code":"GE","name":"georgia"},		
+    {"code":"DE","name":"germany"},		
+    {"code":"GH","name":"ghana"},		
+    {"code":"GI","name":"gibraltar"},		
+    {"code":"GB","name":"great britain"},		
+    {"code":"GR","name":"greece"},		
+    {"code":"HK","name":"hong kong"},		
+    {"code":"HU","name":"hungary"},		
+    {"code":"IS","name":"iceland"},		
+    {"code":"IN","name":"india"},		
+    {"code":"IE","name":"ireland"},		
+    {"code":"IL","name":"israel"},		
+    {"code":"IT","name":"italy"},		
+    {"code":"JM","name":"jamaica"},		
+    {"code":"JP","name":"japan"},		
+    {"code":"KR","name":"korea"},
+    {"code":"LV","name":"latvia"},		
+    {"code":"LB","name":"lebanon"},		
+    {"code":"LT","name":"lithuania"},		
+    {"code":"LU","name":"luxembourg"},		
+    {"code":"MY","name":"malaysia"},		
+    {"code":"MT","name":"malta"},		
+    {"code":"MX","name":"mexico"},		
+    {"code":"MC","name":"monaco"},		
+    {"code":"ME","name":"montenegro"},		
+    {"code":"MA","name":"morocco"},		
+    {"code":"NL","name":"netherlands"},		
+    {"code":"AN","name":"netherlands antilles"},		
+    {"code":"NZ","name":"new zealand"},		
+    {"code":"ND","name":"northern ireland"},		
+    {"code":"NO","name":"norway"},		
+    {"code":"PE","name":"peru"},		
+    {"code":"PL","name":"poland"},		
+    {"code":"PT","name":"portugal"},		
+    {"code":"RO","name":"romania"},		
+    {"code":"RU","name":"russian federation"},		
+    {"code":"LC","name":"saint lucia"},		
+    {"code":"SA","name":"saudi arabia"},		
+    {"code":"RS","name":"serbia"},		
+    {"code":"SG","name":"singapore"},		
+    {"code":"SK","name":"slovakia"},		
+    {"code":"SI","name":"slovenia"},		
+    {"code":"ZA","name":"south africa"},		
+    {"code":"ES","name":"spain"},		
+    {"code":"SE","name":"sweden"},		
+    {"code":"CH","name":"switzerland"},		
+    {"code":"TW","name":"taiwan"},		
+    {"code":"TH","name":"thailand"},		
+    {"code":"TT","name":"trinidad and tobago"},		
+    {"code":"TR","name":"turkey"},		
+    {"code":"UA","name":"ukraine"},		
+    {"code":"AE","name":"united arab emirates"},		
+    {"code":"UY","name":"uruguay"},		
+    {"code":"VE","name":"venezuela"},		
+];
 
+// console.log(ticketmasterCountries);
+// ticketmasterCountries.forEach(function(element) {
+//     if(element.name == "canada"){
+//         console.log(element.code);
+//     }
+    
+//   });
 
 // clicking a button to sign-in or create user
 var log_out=document.getElementById("log-in-drop")
@@ -108,18 +200,18 @@ var create= document.getElementById("create_user")
    })
  
    // grab fb data for autocomplete
-   
-   database.ref("/countries/country_list").on("child_added",function(snapshot){
-  
-  
-      var option= document.createElement("option")
-      option.setAttribute("value",snapshot.val().code)
-      option.setAttribute("class", "list")
-      option.textContent=snapshot.val().name
-      document.getElementById("eventCountry").append(option)
-  
-     });
 
+ var database=firebase.database();
+ database.ref("/countries/country_list").on("child_added",function(snapshot){
+
+
+    var option= document.createElement("option")
+    option.setAttribute("value",snapshot.val().code)
+    option.setAttribute("class", "list")
+    option.textContent=snapshot.val().name
+    document.getElementById("eventCountry").append(option)
+
+   });
 //2. Search Event listeners
 $("#eventSearch").on("click",function(){
     $("#eventDisplay").empty();
@@ -177,6 +269,44 @@ function keywordSearch(){
      
      console.log(searchURL);
     };
+
+//Search Events by Country and City
+ // Generate dynamic search URL
+ function captureSearch(){
+    event.preventDefault();
+   
+    console.log("you clicked event search!");
+     
+    //capture search values
+ 
+     eventCountry = $("#country").val().trim().toLowerCase();
+     console.log("Event Country is: " + eventCountry);
+
+     ticketmasterCountries.forEach(function(element) {
+        if(element.name == eventCountry){
+            console.log(element.code);
+            countryCode = element.code;
+        }
+        
+      });
+ 
+    //  countryCode= document.getElementById("country").value;
+    //  console.log("Country Code is"+ countryCode);
+ 
+    //  eventState = $("#state").val().trim().toLowerCase();
+    //  console.log(eventState);
+ 
+     eventCity = $("#city").val().trim().toLowerCase();
+     console.log(eventCity);
+ 
+     //Get search URL
+     
+    
+     searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&city=" + eventCity +"&countryCode=" + countryCode + "&stateCode=" + stateCode;
+
+     console.log(searchURL);
+    };
+
 
 //3. Call Event API and display data
 
@@ -257,6 +387,15 @@ function getEvents(){
                 newEvent.css("font-size", "20px");
                 neweventTitle.text(eventResults[i].name);
 
+                var newfav = $("<h3>");
+                newfav.css("color", "red");
+                newfav.css("font-size", "24px");
+                newfav.addClass("newfav favorite");
+                newfav.append('<i class="far fa-heart"></i>');
+                //change to this when selected <i class="fas fa-heart"></i>
+
+                newfav.attr("event_id",eventResults[i].id)
+
                 var fav=$("<button>");
                 fav.addClass("btn btn-primary favorite");
                 fav.attr("event_id",eventResults[i].id)
@@ -291,6 +430,7 @@ function getEvents(){
 
                 //append to head
                 newEventcardhead.append(neweventTitle)
+                newEventcardhead.append(newfav);
                 newEventcardhead.append(fav)
                 //append event details to card body    
                         
@@ -325,34 +465,6 @@ function getEvents(){
 
     }// close function
 
- //Search Events by Country and City
- // Generate dynamic search URL
-function captureSearch(){
-    event.preventDefault();
-   
-    console.log("you clicked event search!");
-     
-    //capture search values
  
-    //  eventCountry = $("#country").val().trim().toLowerCase();
-    //  console.log("Event Country is: " + eventCountry);
- 
-     countryCode= document.getElementById("country").value;
-     console.log("Country Code is"+ countryCode);
- 
-    //  eventState = $("#state").val().trim().toLowerCase();
-    //  console.log(eventState);
- 
-     eventCity = $("#city").val().trim().toLowerCase();
-     console.log(eventCity);
- 
-     //Get search URL
-     
-    
-     searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&city=" + eventCity +"&countryCode=" + countryCode + "&stateCode=" + stateCode;
-
-     console.log(searchURL);
-    };
-
  
 }); //End of Document ready
