@@ -23,7 +23,7 @@ var searchURL="";
 var keyWord = "";
 
 
- //grab fb data
+ //grab fb data for autocomplete
  var database=firebase.database();
  database.ref("/countries/country_list").on("child_added",function(snapshot){
 
@@ -42,7 +42,6 @@ $("#eventSearch").on("click",function(){
     captureSearch();
     getEvents();
     $("#country").val("");
-    $("#state").val("");
     $("#city").val("");
 
 }); //end of event search by country, state, city
@@ -70,8 +69,6 @@ function captureSearch(){
      countryCode= document.getElementById("country").value;
      console.log("Country Code is"+ countryCode);
  
-     eventState = $("#state").val().trim().toLowerCase();
-     console.log(eventState);
  
      eventCity = $("#city").val().trim().toLowerCase();
      console.log(eventCity);

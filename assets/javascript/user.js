@@ -37,6 +37,7 @@ var searchURL="";
 var keyWord = "";
 var eventId;
 
+
 // clicking a button to sign-in or create user
 var log_out=document.getElementById("log-in-drop")
 var sign_in= document.getElementById("sign-in")
@@ -44,11 +45,92 @@ var create= document.getElementById("create_user")
 
  //grab fb data
  var database=firebase.database();
+
+ //get user events
+    //user events
+    var user={  uid:"",
+                   user_name:"",
+                   user_email:"",
+                   user_fav_list:[],
+                   update:function(user_info){
+                       this.uid=user_info.uid
+                       this.user_email=user_info.email
+
+                       //grab user name
+                       database.ref("/users/"+user.uid).on("value",function(snapshot){
+                           user.user_name=snapshot.val().user_name
+                           document.getElementById("dropdownMenuButton").textContent=snapshot.val().user_name
+                       })
+                       //grab user fav list
+                       database.ref("/users/"+user.uid+"/favorite").on("child_added",function(snaphot){
+                           user.user_fav_list.push(snaphot.val().event_id)
+                           getEventURL(snaphot.val().event_id);
+                           console.log(user.user_fav_list);
+                       })
+
+                   },
+                   user_logout:function(){
+                       this.uid=""
+                       this.user_email=""
+                       this.user_name=""
+                       this.user_fav_list=[]
+
+                   }
+
+       }
+
+
+    document.getElementById("Log-out").addEventListener("click", function () {
+       firebase.auth().signOut().then(function () {
+         user.user_logout();
+            document.getElementsByClassName("favorited").forEach(element => {
+                element.classList.toggle("favorited")
+            });
+           sign_in.style.display="block"
+           create.style.display="block"
+           log_out.style.display="none"
+           console.log("bye")
+       })
+
+     window.location.href="index.html"
+   })
+
+     firebase.auth().onAuthStateChanged(firebaseUser => {
+
+       if (firebaseUser) {
+          user.update(firebaseUser)
+          sign_in.style.display="none"
+          create.style.display="none"
+          log_out.style.display="block"
+
+
+       }
+   })
  
+   // grab fb data for autocomplete
+   
+   database.ref("/countries/country_list").on("child_added",function(snapshot){
+  
+  
+      var option= document.createElement("option")
+      option.setAttribute("value",snapshot.val().code)
+      option.setAttribute("class", "list")
+      option.textContent=snapshot.val().name
+      document.getElementById("eventCountry").append(option)
+  
+     });
 
 //2. Search Event listeners
+$("#eventSearch").on("click",function(){
+    $("#eventDisplay").empty();
+    captureSearch();
+    getEvents();
+    $("#country").val("");
+    $("#city").val("");
 
-//get eventId
+}); //end of event search by country, state, city
+
+
 
 //Key Word search
 $("#search-btn").on("click",function(){
@@ -61,9 +143,9 @@ $("#search-btn").on("click",function(){
 //3. Functions
 
 // Generate dynamic search URL
-function captureSearch(){
+function getEventURL(eventId){
 
-        //retrieve eventId
+    //retrieve eventId
         
      //Get search URL
  
@@ -73,6 +155,9 @@ function captureSearch(){
      searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&id=" + eventId;
 
      console.log(searchURL);
+     
+     setTimeout(getEvents(), 5000);
+     
     };
 
 function keywordSearch(){
@@ -240,63 +325,34 @@ function getEvents(){
 
     }// close function
 
-    //user events
-    var user={  uid:"",
-                   user_name:"",
-                   user_email:"",
-                   user_fav_list:[],
-                   update:function(user_info){
-                       this.uid=user_info.uid
-                       this.user_email=user_info.email
+ //Search Events by Country and City
+ // Generate dynamic search URL
+function captureSearch(){
+    event.preventDefault();
+   
+    console.log("you clicked event search!");
+     
+    //capture search values
+ 
+    //  eventCountry = $("#country").val().trim().toLowerCase();
+    //  console.log("Event Country is: " + eventCountry);
+ 
+     countryCode= document.getElementById("country").value;
+     console.log("Country Code is"+ countryCode);
+ 
+    //  eventState = $("#state").val().trim().toLowerCase();
+    //  console.log(eventState);
+ 
+     eventCity = $("#city").val().trim().toLowerCase();
+     console.log(eventCity);
+ 
+     //Get search URL
+     
+    
+     searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&city=" + eventCity +"&countryCode=" + countryCode + "&stateCode=" + stateCode;
 
-                       //grab user name
-                       database.ref("/users/"+user.uid).on("value",function(snapshot){
-                           user.user_name=snapshot.val().user_name
-                           document.getElementById("dropdownMenuButton").textContent=snapshot.val().user_name
-                       })
-                       //grab user fav list
-                       database.ref("/users/"+user.uid+"/favorite").on("child_added",function(snaphot){
-                           user.user_fav_list.push(snaphot.val().event_id)
-                       })
-
-                   },
-                   user_logout:function(){
-                       this.uid=""
-                       this.user_email=""
-                       this.user_name=""
-                       this.user_fav_list=[]
-
-                   }
-
-       }
-
-
-    document.getElementById("Log-out").addEventListener("click", function () {
-       firebase.auth().signOut().then(function () {
-         user.user_logout();
-            document.getElementsByClassName("favorited").forEach(element => {
-                element.classList.toggle("favorited")
-            });
-           sign_in.style.display="block"
-           create.style.display="block"
-           log_out.style.display="none"
-           console.log("bye")
-       })
-
-     window.location.href="index.html"
-   })
-
-     firebase.auth().onAuthStateChanged(firebaseUser => {
-
-       if (firebaseUser) {
-          user.update(firebaseUser)
-          sign_in.style.display="none"
-          create.style.display="none"
-          log_out.style.display="block"
-
-
-       }
-   })
+     console.log(searchURL);
+    };
 
  
 }); //End of Document ready
