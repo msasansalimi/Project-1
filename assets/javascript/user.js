@@ -259,37 +259,21 @@ function getEvents(){
                    }
 
        }
-    //    var user={  uid:"",
-    //                user_name:"",
-    //                user_email:"",
-    //                update:function(user_info){
-    //                    this.uid=user_info.uid
-    //                    this.user_email=user_info.email
-
-    //                    //grab user name
-    //                    database.ref("/users/"+user.uid).on("value",function(snapshot){
-    //                        user.user_name=snapshot.val().user_name
-    //                        document.getElementById("dropdownMenuButton").textContent=snapshot.val().user_name
-    //                    })
-    //                    //grab user fav list
-    //                    database.ref("/users/"+user.uid+"/favorite").on("child_added",function(snaphot){
-    //                        user.user_fav_list.push(snaphot.val().event_id)
-    //                    })
-
-    //                },
-    //                user_fav_list:[]
-    //    }
 
 
     document.getElementById("Log-out").addEventListener("click", function () {
        firebase.auth().signOut().then(function () {
+         user.user_logout();
+            document.getElementsByClassName("favorited").forEach(element => {
+                element.classList.toggle("favorited")
+            });
            sign_in.style.display="block"
            create.style.display="block"
            log_out.style.display="none"
            console.log("bye")
        })
 
-
+     window.location.href="index.html"
    })
 
      firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -304,5 +288,5 @@ function getEvents(){
        }
    })
 
-   window.location.href="index.html"
+ 
 }); //End of Document ready
