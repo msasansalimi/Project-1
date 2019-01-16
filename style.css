@@ -46,3 +46,7 @@ body {
 .navbar_toggler {
     margin: auto;
 }
+
+.navbar_dark {
+    align-content: center;
+}

@@ -75,23 +75,24 @@
               
 
               <div class="card-body">
-                      <div class="card-header">
-                          <h2>Default Currency Input</h2>
-                      </div>
-                      <br>
-                  <div class="col-12">
-                      <!-- <label for="defaul-input" class="convertorform-label">Default Input</label> -->
-                      <input type="text" id="amount" class="form-control"><br>
-                      <button type="button" class="btn btn-primary" id="defaul-input">Click!</button>
-                      <hr>
-                  </div>
+                            
+                  <br>
+                  
+              <div class="col-12">
+                  <!-- <label for="defaul-input" class="convertorform-label">Default Input</label> -->
+                  <input type="text" id="amount" class="form-control"><br>
+                  <button type="button" class="btn btn-primary" id="defaul-input">Set Default Currency</button>
+                  <hr>
+                  
+                </form>
+            
+              </div>
 
 
 
+                
 
-                  <div class="card-header">
-                      <h2>Event Location</h2>
-                  </div>
+                  <div class="row collapse" id="LocationToggleExternalContent">
                   <nav class="nav flex-column">
                       <form>
                           <div class="form-row">
@@ -114,9 +115,15 @@
                           <br>
                           <button type="button" id="eventSearch" class="btn btn-primary">Search</button><br>
                           <br>
+                        </div>
+                          <br>
+                            <button class="navbar_toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#LocationToggleExternalContent"
+                                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <!-- <span class="navbar-toggler-icon"></span>-->Location Search
+                            </button>
                           <hr>
                       </form>
-                  </nav>
+                  
 
               </div>
 
@@ -124,15 +131,13 @@
 
 
               <!-- </div> -->
-              <div class="card-header">
-                  <h2>Currency Converter</h2>
-              </div>
+
               <div class="card-body">
 
 
                   <div class="col-sm-12 pos-f-t" id="sidebar">
 
-                      <div class="row collapse show" id="navbarToggleExternalContent">
+                      <div class="row collapse" id="navbarToggleExternalContent">
                           <div class="col-12 sidebar_content">
                               <form>
                                   <div class="form-row">
@@ -161,7 +166,7 @@
                       <nav class="navbar navbar_dark">
                           <button class="navbar_toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
                               aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                              <!-- <span class="navbar-toggler-icon"></span>-->Toggle Currency Converter
+                              <!-- <span class="navbar-toggler-icon"></span>-->Currency Converter
                           </button>
                       </nav>
                   </div>
