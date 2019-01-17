@@ -1,5 +1,8 @@
 body {
-    background-color:royalblue;
+    background-color: blue;
+    background-image: url("IMAGES/light-color-backgrounds-6589709.jpg");
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
 
 }
 #change_default{
@@ -7,13 +10,32 @@ body {
     color: white;
 }
 
+#search-btn {
+    color: white;
+    border-color: gray;
+}
+
 #search-btn:hover {
-    background-color: gray;
+    background-color: blue;
     color: white;
 
 }
+.navbar {
+    background-color: beige;
+}
 
-    
+  .jumbotron {
+      background-image: url("IMAGES/forjumb.jpg");
+      font-family: Georgia, 'Times New Roman', Times, serif;
+  } 
+  
+  .card {
+      background-image: url("IMAGES/rainbow.jpg");
+      
+  }
+  .card-body {
+      font-size: 20px;
+  }
 
 
 #eventDisplay {
@@ -67,4 +89,5 @@ input:invalid {
       background-color: gold;
       display: flex;
   }
+
   
