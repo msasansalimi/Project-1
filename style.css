@@ -7,6 +7,12 @@ body {
     color: white;
 }
 
+#search-btn:hover {
+    background-color: gray;
+    color: white;
+
+}
+
     
 #search-bar {
     background-color: grey;
