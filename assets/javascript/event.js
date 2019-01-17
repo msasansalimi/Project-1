@@ -23,7 +23,7 @@ var searchURL="";
 var keyWord = "";
 
 
- //grab fb data
+ //grab fb data for autocomplete
  var database=firebase.database();
  database.ref("/countries/country_list").on("child_added",function(snapshot){
 
@@ -42,7 +42,6 @@ $("#eventSearch").on("click",function(){
     captureSearch();
     getEvents();
     $("#country").val("");
-    $("#state").val("");
     $("#city").val("");
 
 }); //end of event search by country, state, city
@@ -70,8 +69,6 @@ function captureSearch(){
      countryCode= document.getElementById("country").value;
      console.log("Country Code is"+ countryCode);
  
-     eventState = $("#state").val().trim().toLowerCase();
-     console.log(eventState);
  
      eventCity = $("#city").val().trim().toLowerCase();
      console.log(eventCity);
@@ -172,7 +169,7 @@ function getEvents(){
                 newEvent.attr("id",eventResults[i].id)
                 newEvent.addClass("card float-sm-left float-md-left float-lg-left event");
                 newEvent.css("width", "22rem");
-                newEvent.css("height", "30rem");
+                newEvent.css("height", "35rem");
                 newEvent.css("margin-right", "10px");
                 newEvent.css("margin-bottom", "10px");
 
@@ -184,29 +181,30 @@ function getEvents(){
                 newEventcardbody.addClass("card-body");
 
                 var newEventcardhead=$("<div>");
-                newEventcardhead.addClass("card-head");
+                newEventcardhead.addClass("card-head event-head");
                 
 
                 var neweventTitle = $("<h5>");
-                neweventTitle.addClass("card-title");
+                neweventTitle.addClass("card-title event-title");
                 newEvent.css("font-size", "20px");
                 neweventTitle.text(eventResults[i].name);
                 
 
-                var newfav = $("<h5>");
-                newfav.css("color", "orange");
-                newfav.css("font-size", "20px");
+                var newfav = $("<h3>");
+                newfav.css("color", "red");
+                newfav.css("font-size", "24px");
                 newfav.addClass("newfav favorite");
-                newfav.append('<i class="far fa-heart"></i>');
+                // newfav.attr("event_id",eventResults[i].id)
+                var heart=$("<i>")
+                heart.addClass("far fa-heart")
+                heart.attr("event_id",eventResults[i].id)
+                newfav.append(heart);
                 //change to this when selected <i class="fas fa-heart"></i>
-
-                newfav.attr("event_id",eventResults[i].id)
-              
 
                 var fav=$("<button>");
                 fav.addClass("btn btn-primary favorite");
                 fav.attr("event_id",eventResults[i].id)
-                fav.text("fav") 
+                fav.text("fav")
 
                 var neweventDetails = $("<p>");
                 neweventDetails.addClass("card-text");
