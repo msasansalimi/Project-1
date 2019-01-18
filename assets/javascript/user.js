@@ -505,10 +505,10 @@ $(document).ready(function () {
 
         //capture search values
 
-        keywordSearch = $("#search-bar").val().trim().toLowerCase();
-        console.log("Key word is: " + keywordSearch);
+        keyword = $("#search-bar").val().trim().toLowerCase();
+        console.log("Key word is: " + keyword);
 
-        searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&keyWord=" + keywordSearch;
+        searchURL = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=GRovhZWESxeRpkyVqNiWvG5iDGeyFBTp&keyWord=" + keyword;
 
 
 
