@@ -30,7 +30,7 @@ We have created an app that uses information from a currency converter API and a
 
 The app has events displayed on the page (see simple layout below.
 
-![main page](./images/pagemockup.jpg)
+![main page](https://msasansalimi.github.io/Project-1/)
 
 
 
@@ -40,7 +40,7 @@ search bar, submit button and events on the right
 
 Each event has an image, price range, dates, venue, etc.
 
-![event page](./images/eventmockup.jpg)
+![event page](https://msasansalimi.github.io/Project-1/)
 
 - - - 
 
